@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="620.0" prefWidth="1280.0" spacing="0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cpe223.karlvince.lab7.PortalController">
+
+    <HBox alignment="CENTER_LEFT" prefHeight="60.0" style="-fx-background-color: #1a237e;">
+        <padding><Insets bottom="10" left="24" right="24" top="10" /></padding>
+        <Text fill="WHITE" style="-fx-font-weight: bold;" text="L7 PORTAL">
+            <font><Font name="Arial Bold" size="28.0" /></font>
+        </Text>
+    </HBox>
+
+    <TabPane style="-fx-background-color: #f5f5f5;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <Tab text="  Students  ">
+            <SplitPane dividerPositions="0.3" VBox.vgrow="ALWAYS">
+
+                <!-- Left: Form -->
+                <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 0 1 0 0;">
+                    <padding><Insets bottom="16" left="16" right="16" top="16" /></padding>
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #1a237e;" text="Student Information" />
+                    <Separator />
+
+                    <Label text="Student ID" />
+                    <TextField fx:id="tfStudentId" promptText="e.g. 61234" />
+
+                    <Label text="First Name" />
+                    <TextField fx:id="tfStudentFirst" promptText="First name" />
+
+                    <Label text="Last Name" />
+                    <TextField fx:id="tfStudentLast" promptText="Last name" />
+
+                    <Label text="Email" />
+                    <TextField fx:id="tfStudentEmail" promptText="email@school.edu" />
+
+                    <Label text="Year Level" />
+                    <ComboBox fx:id="cbStudentYear" maxWidth="1.7976931348623157E308" promptText="Select year" />
+
+                    <Label text="Program" />
+                    <ComboBox fx:id="cbStudentProgram" maxWidth="1.7976931348623157E308" promptText="Select program" />
+
+                    <CheckBox fx:id="chkStudentRegular" text="Regular Student" />
+
+                    <Region VBox.vgrow="ALWAYS" />
+                    <Button fx:id="btnStudentAdd" maxWidth="1.7976931348623157E308" style="-fx-background-color: #1a237e; -fx-text-fill: white; -fx-font-size: 13; -fx-padding: 8 16; -fx-cursor: hand;" text="Add" />
+                </VBox>
+
+                <!-- Right: Table -->
+                <TableView fx:id="studentTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colStudentId" prefWidth="100" text="Student ID" />
+                        <TableColumn fx:id="colStudentFirst" prefWidth="120" text="First Name" />
+                        <TableColumn fx:id="colStudentLast" prefWidth="120" text="Last Name" />
+                        <TableColumn fx:id="colStudentYear" prefWidth="100" text="Year Level" />
+                        <TableColumn fx:id="colStudentProgram" prefWidth="90" text="Program" />
+                        <TableColumn fx:id="colStudentRegular" prefWidth="70" text="Regular" />
+                        <TableColumn fx:id="colStudentEmail" prefWidth="180" text="Email" />
+                        <TableColumn fx:id="colStudentAction" prefWidth="70" text="Action" />
+                    </columns>
+                </TableView>
+
+            </SplitPane>
+        </Tab>
+
+        <Tab text="  Courses  ">
+            <SplitPane dividerPositions="0.3" VBox.vgrow="ALWAYS">
+
+                <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 0 1 0 0;">
+                    <padding><Insets bottom="16" left="16" right="16" top="16" /></padding>
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #1a237e;" text="Course Information" />
+                    <Separator />
+
+                    <Label text="Course Code" />
+                    <TextField fx:id="tfCourseCode" promptText="e.g. CPE 223" />
+
+                    <Label text="Course Name" />
+                    <TextField fx:id="tfCourseName" promptText="Course name" />
+
+                    <Label text="Units" />
+                    <ComboBox fx:id="cbCourseUnits" maxWidth="1.7976931348623157E308" promptText="Select units" />
+
+                    <Label text="Department" />
+                    <ComboBox fx:id="cbCourseDept" maxWidth="1.7976931348623157E308" promptText="Select department" />
+
+                    <Label text="Type" />
+                    <HBox spacing="12">
+                        <RadioButton fx:id="rbLecture" text="Lecture" />
+                        <RadioButton fx:id="rbLab" text="Laboratory" />
+                        <RadioButton fx:id="rbElective" text="Elective" />
+                    </HBox>
+
+                    <CheckBox fx:id="chkCourseActive" text="Active" />
+
+                    <Region VBox.vgrow="ALWAYS" />
+                    <Button fx:id="btnCourseAdd" maxWidth="1.7976931348623157E308" style="-fx-background-color: #1a237e; -fx-text-fill: white; -fx-font-size: 13; -fx-padding: 8 16; -fx-cursor: hand;" text="Add" />
+                </VBox>
+
+                <TableView fx:id="courseTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colCourseCode" prefWidth="110" text="Course Code" />
+                        <TableColumn fx:id="colCourseName" prefWidth="200" text="Course Name" />
+                        <TableColumn fx:id="colCourseUnits" prefWidth="60" text="Units" />
+                        <TableColumn fx:id="colCourseDept" prefWidth="100" text="Department" />
+                        <TableColumn fx:id="colCourseType" prefWidth="100" text="Type" />
+                        <TableColumn fx:id="colCourseActive" prefWidth="80" text="Status" />
+                        <TableColumn fx:id="colCourseAction" prefWidth="70" text="Action" />
+                    </columns>
+                </TableView>
+
+            </SplitPane>
+        </Tab>
+
+        <Tab text="  Instructors  ">
+            <SplitPane dividerPositions="0.3" VBox.vgrow="ALWAYS">
+
+                <!-- Left: Form -->
+                <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 0 1 0 0;">
+                    <padding><Insets bottom="16" left="16" right="16" top="16" /></padding>
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #1a237e;" text="Instructor Information" />
+                    <Separator />
+
+                    <Label text="Instructor ID" />
+                    <TextField fx:id="tfInstructorId" promptText="e.g. 712345" />
+
+                    <Label text="First Name" />
+                    <TextField fx:id="tfInstructorFirst" promptText="First name" />
+
+                    <Label text="Last Name" />
+                    <TextField fx:id="tfInstructorLast" promptText="Last name" />
+
+                    <Label text="Email" />
+                    <TextField fx:id="tfInstructorEmail" promptText="email@school.edu" />
+
+                    <Label text="Department" />
+                    <ComboBox fx:id="cbInstructorDept" maxWidth="1.7976931348623157E308" promptText="Select department" />
+
+                    <Label text="Rank" />
+                    <ComboBox fx:id="cbInstructorRank" maxWidth="1.7976931348623157E308" promptText="Select rank" />
+
+                    <CheckBox fx:id="chkInstructorFT" text="Full-Time" />
+
+                    <Region VBox.vgrow="ALWAYS" />
+                    <Button fx:id="btnInstructorAdd" maxWidth="1.7976931348623157E308" style="-fx-background-color: #1a237e; -fx-text-fill: white; -fx-font-size: 13; -fx-padding: 8 16; -fx-cursor: hand;" text="Add" />
+                </VBox>
+
+                <!-- Right: Table -->
+                <TableView fx:id="instructorTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colInstructorId" prefWidth="110" text="Instructor ID" />
+                        <TableColumn fx:id="colInstructorFirst" prefWidth="120" text="First Name" />
+                        <TableColumn fx:id="colInstructorLast" prefWidth="120" text="Last Name" />
+                        <TableColumn fx:id="colInstructorDept" prefWidth="100" text="Department" />
+                        <TableColumn fx:id="colInstructorRank" prefWidth="140" text="Rank" />
+                        <TableColumn fx:id="colInstructorFT" prefWidth="80" text="Status" />
+                        <TableColumn fx:id="colInstructorEmail" prefWidth="180" text="Email" />
+                        <TableColumn fx:id="colInstructorAction" prefWidth="70" text="Action" />
+                    </columns>
+                </TableView>
+
+            </SplitPane>
+        </Tab>
+
+    </TabPane>
+</VBox>
