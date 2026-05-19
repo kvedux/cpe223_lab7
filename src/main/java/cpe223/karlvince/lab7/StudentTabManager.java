@@ -10,7 +10,9 @@ public class StudentTabManager {
     private final TableView<Student> table;
     private final TableColumn<Student, String> colId;
     private final TableColumn<Student, String> colFirst;
+    private final TableColumn<Student, String> colMiddle;
     private final TableColumn<Student, String> colLast;
+    private final TableColumn<Student, Integer> colAge;
     private final TableColumn<Student, String> colEmail;
     private final TableColumn<Student, String> colYear;
     private final TableColumn<Student, String> colProgram;
@@ -19,7 +21,9 @@ public class StudentTabManager {
 
     private final TextField tfId;
     private final TextField tfFirst;
+    private final TextField tfMiddle;
     private final TextField tfLast;
+    private final TextField tfAge;
     private final TextField tfEmail;
     private final ComboBox<String> cbYear;
     private final ComboBox<String> cbProgram;
@@ -32,20 +36,25 @@ public class StudentTabManager {
     public StudentTabManager(TableView<Student> table,
                              TableColumn<Student, String> colId,
                              TableColumn<Student, String> colFirst,
+                             TableColumn<Student, String> colMiddle,
                              TableColumn<Student, String> colLast,
+                             TableColumn<Student, Integer> colAge,
                              TableColumn<Student, String> colEmail,
                              TableColumn<Student, String> colYear,
                              TableColumn<Student, String> colProgram,
                              TableColumn<Student, Boolean> colRegular,
                              TableColumn<Student, Void> colAction,
-                             TextField tfId, TextField tfFirst, TextField tfLast,
-                             TextField tfEmail, ComboBox<String> cbYear,
+                             TextField tfId, TextField tfFirst, TextField tfMiddle,
+                             TextField tfLast, TextField tfAge, TextField tfEmail,
+                             ComboBox<String> cbYear,
                              ComboBox<String> cbProgram, CheckBox chkRegular,
                              Button btnAdd) {
         this.table = table;
         this.colId = colId;
         this.colFirst = colFirst;
+        this.colMiddle = colMiddle;
         this.colLast = colLast;
+        this.colAge = colAge;
         this.colEmail = colEmail;
         this.colYear = colYear;
         this.colProgram = colProgram;
@@ -53,7 +62,9 @@ public class StudentTabManager {
         this.colAction = colAction;
         this.tfId = tfId;
         this.tfFirst = tfFirst;
+        this.tfMiddle = tfMiddle;
         this.tfLast = tfLast;
+        this.tfAge = tfAge;
         this.tfEmail = tfEmail;
         this.cbYear = cbYear;
         this.cbProgram = cbProgram;
@@ -65,7 +76,9 @@ public class StudentTabManager {
         // Bind columns
         colId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         colFirst.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        colMiddle.setCellValueFactory(new PropertyValueFactory<>("middleName"));
         colLast.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colYear.setCellValueFactory(new PropertyValueFactory<>("yearLevel"));
         colProgram.setCellValueFactory(new PropertyValueFactory<>("program"));
@@ -98,7 +111,9 @@ public class StudentTabManager {
         editing = s;
         tfId.setText(s.getStudentId());
         tfFirst.setText(s.getFirstName());
+        tfMiddle.setText(s.getMiddleName());
         tfLast.setText(s.getLastName());
+        tfAge.setText(String.valueOf(s.getAge()));
         tfEmail.setText(s.getEmail());
         cbYear.setValue(s.getYearLevel());
         cbProgram.setValue(s.getProgram());
@@ -114,25 +129,31 @@ public class StudentTabManager {
     private void handleAddOrUpdate() {
         String id = tfId.getText().trim();
         String first = tfFirst.getText().trim();
+        String middle = tfMiddle.getText().trim();
         String last = tfLast.getText().trim();
+        String ageText = tfAge.getText().trim();
         String email = tfEmail.getText().trim();
         String year = cbYear.getValue();
         String program = cbProgram.getValue();
         boolean regular = chkRegular.isSelected();
 
         if (id.isEmpty() || first.isEmpty() || last.isEmpty()) return;
+        int age = 0;
+        try { age = Integer.parseInt(ageText); } catch (NumberFormatException ignored) {}
 
         if (editing != null) {
             editing.setStudentId(id);
             editing.setFirstName(first);
+            editing.setMiddleName(middle);
             editing.setLastName(last);
+            editing.setAge(age);
             editing.setEmail(email);
             editing.setYearLevel(year);
             editing.setProgram(program);
             editing.setRegular(regular);
             table.refresh();
         } else {
-            dataList.add(new Student(id, first, last, email, year, program, regular));
+            dataList.add(new Student(id, first, middle, last, age, email, year, program, regular));
         }
         clearForm();
     }
@@ -141,7 +162,9 @@ public class StudentTabManager {
         editing = null;
         tfId.clear();
         tfFirst.clear();
+        tfMiddle.clear();
         tfLast.clear();
+        tfAge.clear();
         tfEmail.clear();
         cbYear.getSelectionModel().clearSelection();
         cbYear.setValue(null);

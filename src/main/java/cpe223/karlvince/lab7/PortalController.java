@@ -13,7 +13,9 @@ public class PortalController implements Initializable {
     @FXML private TableView<Student> studentTable;
     @FXML private TableColumn<Student, String> colStudentId;
     @FXML private TableColumn<Student, String> colStudentFirst;
+    @FXML private TableColumn<Student, String> colStudentMiddle;
     @FXML private TableColumn<Student, String> colStudentLast;
+    @FXML private TableColumn<Student, Integer> colStudentAge;
     @FXML private TableColumn<Student, String> colStudentEmail;
     @FXML private TableColumn<Student, String> colStudentYear;
     @FXML private TableColumn<Student, String> colStudentProgram;
@@ -22,7 +24,9 @@ public class PortalController implements Initializable {
 
     @FXML private TextField tfStudentId;
     @FXML private TextField tfStudentFirst;
+    @FXML private TextField tfStudentMiddle;
     @FXML private TextField tfStudentLast;
+    @FXML private TextField tfStudentAge;
     @FXML private TextField tfStudentEmail;
     @FXML private ComboBox<String> cbStudentYear;
     @FXML private ComboBox<String> cbStudentProgram;
@@ -51,6 +55,7 @@ public class PortalController implements Initializable {
     @FXML private TableView<Instructor> instructorTable;
     @FXML private TableColumn<Instructor, String> colInstructorId;
     @FXML private TableColumn<Instructor, String> colInstructorFirst;
+    @FXML private TableColumn<Instructor, String> colInstructorMiddle;
     @FXML private TableColumn<Instructor, String> colInstructorLast;
     @FXML private TableColumn<Instructor, String> colInstructorEmail;
     @FXML private TableColumn<Instructor, String> colInstructorDept;
@@ -60,6 +65,7 @@ public class PortalController implements Initializable {
 
     @FXML private TextField tfInstructorId;
     @FXML private TextField tfInstructorFirst;
+    @FXML private TextField tfInstructorMiddle;
     @FXML private TextField tfInstructorLast;
     @FXML private TextField tfInstructorEmail;
     @FXML private ComboBox<String> cbInstructorDept;
@@ -71,9 +77,11 @@ public class PortalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         new StudentTabManager(
                 studentTable,
-                colStudentId, colStudentFirst, colStudentLast, colStudentEmail,
+                colStudentId, colStudentFirst, colStudentMiddle, colStudentLast,
+                colStudentAge, colStudentEmail,
                 colStudentYear, colStudentProgram, colStudentRegular, colStudentAction,
-                tfStudentId, tfStudentFirst, tfStudentLast, tfStudentEmail,
+                tfStudentId, tfStudentFirst, tfStudentMiddle, tfStudentLast,
+                tfStudentAge, tfStudentEmail,
                 cbStudentYear, cbStudentProgram, chkStudentRegular, btnStudentAdd
         ).init();
 
@@ -87,9 +95,11 @@ public class PortalController implements Initializable {
 
         new InstructorTabManager(
                 instructorTable,
-                colInstructorId, colInstructorFirst, colInstructorLast, colInstructorEmail,
-                colInstructorDept, colInstructorRank, colInstructorFT, colInstructorAction,
-                tfInstructorId, tfInstructorFirst, tfInstructorLast, tfInstructorEmail,
+                colInstructorId, colInstructorFirst, colInstructorMiddle, colInstructorLast,
+                colInstructorEmail, colInstructorDept, colInstructorRank,
+                colInstructorFT, colInstructorAction,
+                tfInstructorId, tfInstructorFirst, tfInstructorMiddle, tfInstructorLast,
+                tfInstructorEmail,
                 cbInstructorDept, cbInstructorRank, chkInstructorFT, btnInstructorAdd
         ).init();
     }

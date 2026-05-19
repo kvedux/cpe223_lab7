@@ -53,9 +53,9 @@
 
 <VBox prefHeight="620.0" prefWidth="1280.0" spacing="0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cpe223.karlvince.lab7.PortalController">
 
-    <HBox alignment="CENTER_LEFT" prefHeight="60.0" style="-fx-background-color: #1a237e;">
+    <HBox alignment="CENTER_LEFT" prefHeight="60.0" style="-fx-background-color: #800000;">
         <padding><Insets bottom="10" left="24" right="24" top="10" /></padding>
-        <Text fill="WHITE" style="-fx-font-weight: bold;" text="L7 PORTAL">
+        <Text fill="GOLD" style="-fx-font-weight: bold;" text="L7 PORTAL">
             <font><Font name="Arial Bold" size="28.0" /></font>
         </Text>
     </HBox>
@@ -68,7 +68,7 @@
                 <!-- Left: Form -->
                 <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 0 1 0 0;">
                     <padding><Insets bottom="16" left="16" right="16" top="16" /></padding>
-                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #1a237e;" text="Student Information" />
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #800000;" text="Student Information" />
                     <Separator />
 
                     <Label text="Student ID" />
@@ -77,8 +77,14 @@
                     <Label text="First Name" />
                     <TextField fx:id="tfStudentFirst" promptText="First name" />
 
+                    <Label text="Middle Name" />
+                    <TextField fx:id="tfStudentMiddle" promptText="Middle name" />
+
                     <Label text="Last Name" />
                     <TextField fx:id="tfStudentLast" promptText="Last name" />
+
+                    <Label text="Age" />
+                    <TextField fx:id="tfStudentAge" promptText="e.g. 20" />
 
                     <Label text="Email" />
                     <TextField fx:id="tfStudentEmail" promptText="email@school.edu" />
@@ -92,17 +98,19 @@
                     <CheckBox fx:id="chkStudentRegular" text="Regular Student" />
 
                     <Region VBox.vgrow="ALWAYS" />
-                    <Button fx:id="btnStudentAdd" maxWidth="1.7976931348623157E308" style="-fx-background-color: #1a237e; -fx-text-fill: white; -fx-font-size: 13; -fx-padding: 8 16; -fx-cursor: hand;" text="Add" />
+                    <Button fx:id="btnStudentAdd" maxWidth="1.7976931348623157E308" style="-fx-background-color: #800000; -fx-text-fill: white; -fx-font-size: 13; -fx-padding: 8 16; -fx-cursor: hand;" text="Add" />
                 </VBox>
 
                 <!-- Right: Table -->
                 <TableView fx:id="studentTable" VBox.vgrow="ALWAYS">
                     <columns>
                         <TableColumn fx:id="colStudentId" prefWidth="100" text="Student ID" />
-                        <TableColumn fx:id="colStudentFirst" prefWidth="120" text="First Name" />
-                        <TableColumn fx:id="colStudentLast" prefWidth="120" text="Last Name" />
-                        <TableColumn fx:id="colStudentYear" prefWidth="100" text="Year Level" />
-                        <TableColumn fx:id="colStudentProgram" prefWidth="90" text="Program" />
+                        <TableColumn fx:id="colStudentFirst" prefWidth="110" text="First Name" />
+                        <TableColumn fx:id="colStudentMiddle" prefWidth="110" text="Middle Name" />
+                        <TableColumn fx:id="colStudentLast" prefWidth="110" text="Last Name" />
+                        <TableColumn fx:id="colStudentAge" prefWidth="60" text="Age" />
+                        <TableColumn fx:id="colStudentYear" prefWidth="90" text="Year Level" />
+                        <TableColumn fx:id="colStudentProgram" prefWidth="80" text="Program" />
                         <TableColumn fx:id="colStudentRegular" prefWidth="70" text="Regular" />
                         <TableColumn fx:id="colStudentEmail" prefWidth="180" text="Email" />
                         <TableColumn fx:id="colStudentAction" prefWidth="70" text="Action" />
@@ -117,7 +125,7 @@
 
                 <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 0 1 0 0;">
                     <padding><Insets bottom="16" left="16" right="16" top="16" /></padding>
-                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #1a237e;" text="Course Information" />
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #800000;" text="Course Information" />
                     <Separator />
 
                     <Label text="Course Code" />
@@ -142,7 +150,7 @@
                     <CheckBox fx:id="chkCourseActive" text="Active" />
 
                     <Region VBox.vgrow="ALWAYS" />
-                    <Button fx:id="btnCourseAdd" maxWidth="1.7976931348623157E308" style="-fx-background-color: #1a237e; -fx-text-fill: white; -fx-font-size: 13; -fx-padding: 8 16; -fx-cursor: hand;" text="Add" />
+                    <Button fx:id="btnCourseAdd" maxWidth="1.7976931348623157E308" style="-fx-background-color: #800000; -fx-text-fill: white; -fx-font-size: 13; -fx-padding: 8 16; -fx-cursor: hand;" text="Add" />
                 </VBox>
 
                 <TableView fx:id="courseTable" VBox.vgrow="ALWAYS">
@@ -166,7 +174,7 @@
                 <!-- Left: Form -->
                 <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 0 1 0 0;">
                     <padding><Insets bottom="16" left="16" right="16" top="16" /></padding>
-                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #1a237e;" text="Instructor Information" />
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #800000;" text="Instructor Information" />
                     <Separator />
 
                     <Label text="Instructor ID" />
@@ -174,6 +182,9 @@
 
                     <Label text="First Name" />
                     <TextField fx:id="tfInstructorFirst" promptText="First name" />
+
+                    <Label text="Middle Name" />
+                    <TextField fx:id="tfInstructorMiddle" promptText="Middle name" />
 
                     <Label text="Last Name" />
                     <TextField fx:id="tfInstructorLast" promptText="Last name" />
@@ -190,15 +201,16 @@
                     <CheckBox fx:id="chkInstructorFT" text="Full-Time" />
 
                     <Region VBox.vgrow="ALWAYS" />
-                    <Button fx:id="btnInstructorAdd" maxWidth="1.7976931348623157E308" style="-fx-background-color: #1a237e; -fx-text-fill: white; -fx-font-size: 13; -fx-padding: 8 16; -fx-cursor: hand;" text="Add" />
+                    <Button fx:id="btnInstructorAdd" maxWidth="1.7976931348623157E308" style="-fx-background-color: #800000; -fx-text-fill: white; -fx-font-size: 13; -fx-padding: 8 16; -fx-cursor: hand;" text="Add" />
                 </VBox>
 
                 <!-- Right: Table -->
                 <TableView fx:id="instructorTable" VBox.vgrow="ALWAYS">
                     <columns>
                         <TableColumn fx:id="colInstructorId" prefWidth="110" text="Instructor ID" />
-                        <TableColumn fx:id="colInstructorFirst" prefWidth="120" text="First Name" />
-                        <TableColumn fx:id="colInstructorLast" prefWidth="120" text="Last Name" />
+                        <TableColumn fx:id="colInstructorFirst" prefWidth="110" text="First Name" />
+                        <TableColumn fx:id="colInstructorMiddle" prefWidth="110" text="Middle Name" />
+                        <TableColumn fx:id="colInstructorLast" prefWidth="110" text="Last Name" />
                         <TableColumn fx:id="colInstructorDept" prefWidth="100" text="Department" />
                         <TableColumn fx:id="colInstructorRank" prefWidth="140" text="Rank" />
                         <TableColumn fx:id="colInstructorFT" prefWidth="80" text="Status" />

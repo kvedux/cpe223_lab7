@@ -10,6 +10,7 @@ public class InstructorTabManager {
     private final TableView<Instructor> table;
     private final TableColumn<Instructor, String> colId;
     private final TableColumn<Instructor, String> colFirst;
+    private final TableColumn<Instructor, String> colMiddle;
     private final TableColumn<Instructor, String> colLast;
     private final TableColumn<Instructor, String> colEmail;
     private final TableColumn<Instructor, String> colDept;
@@ -19,6 +20,7 @@ public class InstructorTabManager {
 
     private final TextField tfId;
     private final TextField tfFirst;
+    private final TextField tfMiddle;
     private final TextField tfLast;
     private final TextField tfEmail;
     private final ComboBox<String> cbDept;
@@ -32,19 +34,22 @@ public class InstructorTabManager {
     public InstructorTabManager(TableView<Instructor> table,
                                 TableColumn<Instructor, String> colId,
                                 TableColumn<Instructor, String> colFirst,
+                                TableColumn<Instructor, String> colMiddle,
                                 TableColumn<Instructor, String> colLast,
                                 TableColumn<Instructor, String> colEmail,
                                 TableColumn<Instructor, String> colDept,
                                 TableColumn<Instructor, String> colRank,
                                 TableColumn<Instructor, Boolean> colFT,
                                 TableColumn<Instructor, Void> colAction,
-                                TextField tfId, TextField tfFirst, TextField tfLast,
-                                TextField tfEmail, ComboBox<String> cbDept,
+                                TextField tfId, TextField tfFirst, TextField tfMiddle,
+                                TextField tfLast, TextField tfEmail,
+                                ComboBox<String> cbDept,
                                 ComboBox<String> cbRank, CheckBox chkFT,
                                 Button btnAdd) {
         this.table = table;
         this.colId = colId;
         this.colFirst = colFirst;
+        this.colMiddle = colMiddle;
         this.colLast = colLast;
         this.colEmail = colEmail;
         this.colDept = colDept;
@@ -53,6 +58,7 @@ public class InstructorTabManager {
         this.colAction = colAction;
         this.tfId = tfId;
         this.tfFirst = tfFirst;
+        this.tfMiddle = tfMiddle;
         this.tfLast = tfLast;
         this.tfEmail = tfEmail;
         this.cbDept = cbDept;
@@ -64,6 +70,7 @@ public class InstructorTabManager {
     public void init() {
         colId.setCellValueFactory(new PropertyValueFactory<>("instructorId"));
         colFirst.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        colMiddle.setCellValueFactory(new PropertyValueFactory<>("middleName"));
         colLast.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colDept.setCellValueFactory(new PropertyValueFactory<>("department"));
@@ -97,6 +104,7 @@ public class InstructorTabManager {
         editing = i;
         tfId.setText(i.getInstructorId());
         tfFirst.setText(i.getFirstName());
+        tfMiddle.setText(i.getMiddleName());
         tfLast.setText(i.getLastName());
         tfEmail.setText(i.getEmail());
         cbDept.setValue(i.getDepartment());
@@ -113,6 +121,7 @@ public class InstructorTabManager {
     private void handleAddOrUpdate() {
         String id = tfId.getText().trim();
         String first = tfFirst.getText().trim();
+        String middle = tfMiddle.getText().trim();
         String last = tfLast.getText().trim();
         String email = tfEmail.getText().trim();
         String dept = cbDept.getValue();
@@ -124,6 +133,7 @@ public class InstructorTabManager {
         if (editing != null) {
             editing.setInstructorId(id);
             editing.setFirstName(first);
+            editing.setMiddleName(middle);
             editing.setLastName(last);
             editing.setEmail(email);
             editing.setDepartment(dept);
@@ -131,7 +141,7 @@ public class InstructorTabManager {
             editing.setFullTime(ft);
             table.refresh();
         } else {
-            dataList.add(new Instructor(id, first, last, email, dept, rank, ft));
+            dataList.add(new Instructor(id, first, middle, last, email, dept, rank, ft));
         }
         clearForm();
     }
@@ -140,6 +150,7 @@ public class InstructorTabManager {
         editing = null;
         tfId.clear();
         tfFirst.clear();
+        tfMiddle.clear();
         tfLast.clear();
         tfEmail.clear();
         cbDept.getSelectionModel().clearSelection();

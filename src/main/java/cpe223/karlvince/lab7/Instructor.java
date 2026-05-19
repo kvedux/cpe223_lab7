@@ -6,16 +6,18 @@ public class Instructor {
 
     private final StringProperty instructorId;
     private final StringProperty firstName;
+    private final StringProperty middleName;
     private final StringProperty lastName;
     private final StringProperty email;
     private final StringProperty department;
     private final StringProperty rank;
     private final BooleanProperty fullTime;
 
-    public Instructor(String instructorId, String firstName, String lastName, String email,
-                      String department, String rank, boolean fullTime) {
+    public Instructor(String instructorId, String firstName, String middleName, String lastName,
+                      String email, String department, String rank, boolean fullTime) {
         this.instructorId = new SimpleStringProperty(instructorId);
         this.firstName = new SimpleStringProperty(firstName);
+        this.middleName = new SimpleStringProperty(middleName);
         this.lastName = new SimpleStringProperty(lastName);
         this.email = new SimpleStringProperty(email);
         this.department = new SimpleStringProperty(department);
@@ -32,6 +34,11 @@ public class Instructor {
     public String getFirstName() { return firstName.get(); }
     public void setFirstName(String value) { firstName.set(value); }
     public StringProperty firstNameProperty() { return firstName; }
+
+    // middleName
+    public String getMiddleName() { return middleName.get(); }
+    public void setMiddleName(String value) { middleName.set(value); }
+    public StringProperty middleNameProperty() { return middleName; }
 
     // lastName
     public String getLastName() { return lastName.get(); }
